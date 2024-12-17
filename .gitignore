@@ -113,3 +113,5 @@ draft.md
 
 # Local Netlify folder
 .netlify
+# folders created by IDE
+.idea
