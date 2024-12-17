@@ -45,6 +45,7 @@ const nav: ThemeConfig['nav'] = [
         text: 'Resources',
         items: [
           { text: 'Partners', link: '/partners/' },
+          { text: 'Developers', link: '/developers/' },
           { text: 'Themes', link: '/ecosystem/themes' },
           { text: 'UI Components', link: 'https://ui-libs.vercel.app/' },
           {
@@ -125,9 +126,13 @@ const nav: ThemeConfig['nav'] = [
     link: '/sponsor/'
   },
   {
-    text: 'Partners',
-    link: '/partners/',
-    activeMatch: `^/partners/`
+    text: 'Experts',
+    badge: { text: 'NEW' },
+    activeMatch: `^/(partners|developers)/`,
+    items: [
+      { text: 'Partners', link: '/partners/' },
+      { text: 'Developers', link: '/developers/', badge: { text: 'NEW' } }
+    ]
   }
 ]
 
@@ -176,15 +181,15 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/event-handling'
         },
         { text: 'Form Input Bindings', link: '/guide/essentials/forms' },
-        {
-          text: 'Lifecycle Hooks',
-          link: '/guide/essentials/lifecycle'
-        },
         { text: 'Watchers', link: '/guide/essentials/watchers' },
         { text: 'Template Refs', link: '/guide/essentials/template-refs' },
         {
           text: 'Components Basics',
           link: '/guide/essentials/component-basics'
+        },
+        {
+          text: 'Lifecycle Hooks',
+          link: '/guide/essentials/lifecycle'
         }
       ]
     },
@@ -368,6 +373,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
         {
           text: 'Dependency Injection',
           link: '/api/composition-api-dependency-injection'
+        },
+        {
+          text: 'Helpers',
+          link: '/api/composition-api-helpers'
         }
       ]
     },
@@ -417,6 +426,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: 'Advanced APIs',
       items: [
+        { text: 'Custom Elements', link: '/api/custom-elements' },
         { text: 'Render Function', link: '/api/render-function' },
         { text: 'Server-Side Rendering', link: '/api/ssr' },
         { text: 'TypeScript Utility Types', link: '/api/utility-types' },
@@ -562,6 +572,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
 
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
+
+  sitemap: {
+    hostname: 'https://vuejs.org'
+  },
 
   lang: 'en-US',
   title: 'Vue.js',
@@ -760,7 +774,6 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     },
     build: {
-      minify: 'terser',
       chunkSizeWarningLimit: Infinity
     },
     json: {
